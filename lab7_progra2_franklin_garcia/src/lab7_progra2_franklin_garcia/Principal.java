@@ -337,7 +337,6 @@ public class Principal extends javax.swing.JFrame {
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         ap.cargarArchivo();
         lista_personas=ap.getListaPersonas();
-        
     }//GEN-LAST:event_jButton4MouseClicked
 
     /**
