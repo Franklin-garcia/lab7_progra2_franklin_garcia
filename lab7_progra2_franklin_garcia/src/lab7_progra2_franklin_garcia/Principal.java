@@ -5,6 +5,8 @@
  */
 package lab7_progra2_franklin_garcia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Franklin Garcia
@@ -42,6 +44,7 @@ public class Principal extends javax.swing.JFrame {
         fundacion = new javax.swing.JTextField();
         clima = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +63,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel7.setText("Año de fundacion");
 
         jButton1.setText("Crear ");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("Registrar personas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,7 +97,10 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(habitantes, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(zona, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fundacion, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(70, 70, 70)
+                                .addComponent(jButton2)))))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,7 +133,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(fundacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
 
@@ -137,6 +152,18 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        String nombre2=nombre.getText();
+        String clima2=clima.getText();
+        String extension2=extension.getText();
+        String habitantes2=habitantes.getText();
+        String zona2=zona.getText();
+        String fundacion2=fundacion.getText();
+        Lugares lugar=new Lugares(nombre2,clima2,extension2,habitantes2,zona2,fundacion2);
+        lista_lugares.add(lugar);
+        lugar.start();
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -179,6 +206,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField fundacion;
     private javax.swing.JTextField habitantes;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -190,4 +218,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField zona;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Lugares> lista_lugares = new ArrayList();
+    ArrayList<Personas> lista_personas = new ArrayList();
 }
