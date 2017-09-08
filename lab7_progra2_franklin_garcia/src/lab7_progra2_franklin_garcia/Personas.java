@@ -5,11 +5,14 @@
  */
 package lab7_progra2_franklin_garcia;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Franklin Garcia
  */
-public class Personas {
+public class Personas implements Serializable {
+        private static final long SerialVersionUID=665L;
   public String nombre;
   public String id;
   public String lugar; 

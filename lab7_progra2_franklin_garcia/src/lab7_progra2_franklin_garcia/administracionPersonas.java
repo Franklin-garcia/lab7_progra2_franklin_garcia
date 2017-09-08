@@ -17,20 +17,20 @@ import java.util.ArrayList;
  *
  * @author Franklin Garcia
  */
-public class administracionLugares {
-       private ArrayList<Lugares> listaLugares = new ArrayList();
+public class administracionPersonas {
+       private ArrayList<Personas> listaPersonas = new ArrayList();
     private File archivo = null;
 
-    public administracionLugares(String Path) {
+    public administracionPersonas(String Path) {
         archivo = new File(Path);
     }
 
-    public ArrayList<Lugares> getListaPersonas() {
-        return listaLugares;
+    public ArrayList<Personas> getListaPersonas() {
+        return listaPersonas;
     }
 
-    public void setListaPersonas(ArrayList<Lugares> listaPersonas) {
-        this.listaLugares = listaPersonas;
+    public void setListaPersonas(ArrayList<Personas> listaPersonas) {
+        this.listaPersonas = listaPersonas;
     }
 
     public File getArchivo() {
@@ -43,24 +43,24 @@ public class administracionLugares {
 
     @Override
     public String toString() {
-        return "Lista persoans" + listaLugares;
+        return "Lista persoans" + listaPersonas;
     }
 
     //Mutador extra
-    public void setPersona(Lugares P) {
-        this.listaLugares.add(P);
+    public void setPersona(Personas P) {
+        this.listaPersonas.add(P);
     }
 
     public void cargarArchivo() {
         try {
-            listaLugares = new ArrayList();
-            Lugares temp;
+            listaPersonas = new ArrayList();
+            Personas temp;
             if (archivo.exists()) {
                 FileInputStream entrada = new FileInputStream(archivo);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Lugares) objeto.readObject()) != null) {
-                        listaLugares.add(temp);
+                    while ((temp = (Personas) objeto.readObject()) != null) {
+                        listaPersonas.add(temp);
                     }
                 } catch (EOFException e) {
                 }
@@ -78,7 +78,7 @@ public class administracionLugares {
         try {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            for (Lugares t : listaLugares) {
+            for (Personas t : listaPersonas) {
                 bw.writeObject(t);
             }
         } catch (Exception e) {

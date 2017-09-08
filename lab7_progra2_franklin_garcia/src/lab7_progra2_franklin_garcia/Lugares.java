@@ -21,7 +21,6 @@ public class Lugares extends Thread {
     public String habitantes;
     public String zona;
     public String fundacion;
-    public boolean vive;
     public Principal2 mostrar = new Principal2();
     public Principal ventana = new Principal();
     public ArrayList<Personas> lista = new ArrayList();
@@ -36,7 +35,6 @@ public class Lugares extends Thread {
         this.habitantes = habitantes;
         this.zona = zona;
         this.fundacion = fundacion;
-        this.vive = vive;
         this.mostrar = mostrar;
         this.ventana = ventana;
         this.lista = lista;
@@ -98,14 +96,6 @@ public class Lugares extends Thread {
         this.fundacion = fundacion;
     }
 
-    public boolean isVive() {
-        return vive;
-    }
-
-    public void setVive(boolean vive) {
-        this.vive = vive;
-    }
-
     @Override
     public String toString() {
         return nombre;
@@ -115,21 +105,23 @@ public class Lugares extends Thread {
     public void run() {
         mostrar.setVisible(true);
         mostrar.lugar.setText(nombre);
+        DefaultTableModel modelo = (DefaultTableModel) mostrar.tabla1.getModel();
         while (true) {
+            while (mostrar.tabla1.getRowCount() > 0) {
+                modelo.removeRow(0);
+            }
+            mostrar.tabla1.setModel(modelo);
             for (Personas p : lista) {
                 if (p.lugar.equals(nombre)) {
-                Object[] newrow = {p.getNombre(), p.getId(), p.getEdad(), p.getLugar(), p.getEstatura(), p.getEstatura()
-                };
-                System.out.println(p.getNombre() + p.getId() + p.getEdad() + p.getLugar() + p.getEstatura() + p.getEstatura());
-                DefaultTableModel modelo = (DefaultTableModel) mostrar.tabla1.getModel();
-                modelo.addRow(newrow);
-                mostrar.tabla1.setModel(modelo);
-
+                    Object[] newrow = {p.getNombre(), p.getId(), p.getLugar(), p.getEdad(), p.getEstatura(), p.getProfesión()
+                    };
+                    modelo.addRow(newrow);
                 }
             }
+            mostrar.tabla1.setModel(modelo);
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(3000);
             } catch (InterruptedException ex) {
             }
         }
