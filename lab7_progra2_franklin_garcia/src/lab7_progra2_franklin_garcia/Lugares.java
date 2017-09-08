@@ -10,13 +10,13 @@ package lab7_progra2_franklin_garcia;
  * @author Franklin Garcia
  */
 public class Lugares {
-   private String nombre;
-   private String clima;
-   private String extensión;
-   private String territorial;
-   private String habitantes; 
-   private String zona;
-   private String fundacion;
+   public String nombre;
+   public String clima;
+   public String extensión;
+   public String territorial;
+   public String habitantes; 
+   public String zona;
+   public String fundacion;
 
     public Lugares() {
     }

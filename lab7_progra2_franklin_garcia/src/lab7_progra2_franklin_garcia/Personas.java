@@ -10,12 +10,12 @@ package lab7_progra2_franklin_garcia;
  * @author Franklin Garcia
  */
 public class Personas {
-  private String nombre;
-  private String id;
-  private String lugar; 
-  private String edad;
-  private String estatura;
-  private String profesión;
+  public String nombre;
+  public String id;
+  public String lugar; 
+  public String edad;
+  public String estatura;
+  public String profesión;
 
     public Personas() {
     }
