@@ -5,6 +5,10 @@
  */
 package lab7_progra2_franklin_garcia;
 
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Franklin Garcia
@@ -18,12 +22,14 @@ public class Lugares extends Thread {
     public String zona;
     public String fundacion;
     public boolean vive;
-    public Principal2 mostrar=new Principal2();
+    public Principal2 mostrar = new Principal2();
+    public Principal ventana = new Principal();
+    public ArrayList<Personas> lista = new ArrayList();
 
     public Lugares() {
     }
 
-    public Lugares(String nombre, String clima, String extensión, String habitantes, String zona, String fundacion) {
+    public Lugares(String nombre, String clima, String extensión, String habitantes, String zona, String fundacion, ArrayList<Personas> lista) {
         this.nombre = nombre;
         this.clima = clima;
         this.extensión = extensión;
@@ -32,6 +38,8 @@ public class Lugares extends Thread {
         this.fundacion = fundacion;
         this.vive = vive;
         this.mostrar = mostrar;
+        this.ventana = ventana;
+        this.lista = lista;
     }
 
     public Principal2 getMostrar() {
@@ -107,9 +115,23 @@ public class Lugares extends Thread {
     public void run() {
         mostrar.setVisible(true);
         mostrar.lugar.setText(nombre);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
+        while (true) {
+            for (Personas p : lista) {
+                if (p.lugar.equals(nombre)) {
+                Object[] newrow = {p.getNombre(), p.getId(), p.getEdad(), p.getLugar(), p.getEstatura(), p.getEstatura()
+                };
+                System.out.println(p.getNombre() + p.getId() + p.getEdad() + p.getLugar() + p.getEstatura() + p.getEstatura());
+                DefaultTableModel modelo = (DefaultTableModel) mostrar.tabla1.getModel();
+                modelo.addRow(newrow);
+                mostrar.tabla1.setModel(modelo);
+
+                }
+            }
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException ex) {
+            }
         }
     }
 }
