@@ -12,13 +12,14 @@ import java.io.Serializable;
  * @author Franklin Garcia
  */
 public class Personas implements Serializable {
-        private static final long SerialVersionUID=665L;
-  public String nombre;
-  public String id;
-  public String lugar; 
-  public String edad;
-  public String estatura;
-  public String profesión;
+
+    private static final long SerialVersionUID = 665L;
+    public String nombre;
+    public String id;
+    public String lugar;
+    public String edad;
+    public String estatura;
+    public String profesión;
 
     public Personas() {
     }
@@ -84,5 +85,5 @@ public class Personas implements Serializable {
     public String toString() {
         return nombre;
     }
-  
+
 }
